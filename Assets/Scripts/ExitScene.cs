@@ -2,10 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExitScene : MonoBehaviour {
+public class ExitScene : MonoBehaviour
+{
 
-    public void Quit()
+    public void QuitGame()
     {
+#if UNITY_EDITOR
+
         UnityEditor.EditorApplication.isPlaying = false;
+#else
+         Application.Quit();
+#endif
     }
 }
