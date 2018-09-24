@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour {
     public Text countText;
     private int count;
     public Text winText;
+    public AudioClip collect; // this is the collection sound
 
     private void Start()
     {
@@ -17,6 +18,8 @@ public class PlayerController : MonoBehaviour {
         count = 0;
         SetCountText();
         winText.text = "";
+        GetComponent<AudioSource>().playOnAwake = false;
+        GetComponent<AudioSource>().clip = collect;
     }
 
     void FixedUpdate () {
@@ -35,6 +38,7 @@ public class PlayerController : MonoBehaviour {
             other.gameObject.SetActive(false);
             count = count + 1;
             SetCountText();
+            GetComponent<AudioSource>().Play();
         }
     }
 
